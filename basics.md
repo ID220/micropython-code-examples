@@ -1,155 +1,176 @@
-# Basic examples
+# Python basics
 
 This pages contains very simple code examples you should probably be already familiar with. For further documentation of how to use MicroPython with the micro:bit please refer to [these amazing tutorials](https://microbit-micropython.readthedocs.io/en/v1.0.1/).
 
 **Index**
 
-- [Basic examples](#basic-examples)
-  - [Matrix LED blinking](#matrix-led-blinking)
-    - [One LED](#one-led)
-    - [All](#all)
-    - [X-Cross](#x-cross)
-    - [Blinking two LEDs (blocking)](#blinking-two-leds-blocking)
-    - [Blinking two LEDs (non-blocking)](#blinking-two-leds-non-blocking)
+- [Python basics](#python-basics)
+  - [Types and convertions](#types-and-convertions)
+    - [Numbers (unmutable)](#numbers-unmutable)
+    - [Strings (unmutable)](#strings-unmutable)
+    - [Booleans (unmutable)](#booleans-unmutable)
+    - [Lists (mutable)](#lists-mutable)
+  - [Functions](#functions)
+    - [Declaring and using a function](#declaring-and-using-a-function)
+    - [Passing parameters](#passing-parameters)
+    - [Functions and globals](#functions-and-globals)
+    - [Higher order functions](#higher-order-functions)
 
 ---
 
-types (string, int, boolean) and convertions
-list: address, slice, push, len, pop, extends
-functions:su
+## Types and convertions
 
-globals
-list - addressing - slicing
-copy a list
-functions
+### Numbers (unmutable)
+
+```python
+x = 3   # integer
+y = 5.2   # floating point
+
+x + y       # 8.2
+x - y       # -2.2
+x * y       # 15.6
+10 / x      # 3.3333
+10 // x     # 3
+10 % x      # 1
+x ** 3      # 27
+abs(-2)     # 2
+int(y)      # 5
+```
+
+### Strings (unmutable)
+
+```python
+str1 = "A string"
+str2 = 'Another'
+
+str1 + " " + str2   # "A string Another"
+str1 * 2            # "A stringA string"
+len(str1)           # 8
+str1[0]             # 'A'
+str1[0:4]           # 'A st'
+str1.index('s')     # 2
+str1.split(' ')     # ['A', 'string']
+"1" + str(2)        # '12'
+int("1") + 1        # 2 (number)
+```
+
+### Booleans (unmutable)
+
+```python
+True
+False
+
+True or False       # True
+True and False      # False
+not True            # False
+
+5 < 10              # True
+```
+
+### Lists (mutable)
+
+```python
+ls = []
+other = [1,2,3]
+
+ls.append(4)        # ls=> [4]
+other.pop()         # other => [1,2]
+ls.extend(other)    # ls => [4, 1, 2]
+len(ls)             # 3
+ls[0]               # 4
+ls[0:2]             # [4, 1]
+ls[0]= 1            # ls => [1, 1, 2]
+ls.copy()           # [1, 1, 2]
+ls.clear()          # ls = []
+```
+
+> **NOTE** Python has several other [buil-in types](https://docs.python.org/3/library/stdtypes.html). Worth noticing are dictionaries (`dict`), `tuple`, `range`, and `set`.
 
 ---
 
-## Matrix LED blinking
+## Functions
 
-Various examples of how to blink the "pixels" (the LEDs of the micro:bit matrix).
-All the examples assume you import the microbit library: `from microbit import *`
-
-### One LED
+### Declaring and using a function
 
 ```python
-while True:
-    display.set_pixel(0,0,9)
-    sleep(1000)
-    display.set_pixel(0,0,0)
-    sleep(1000)
+# definition
+def sum(a,b):
+    return a+b
+
+# function call
+sum(1,2)        # 3
 ```
 
-or even better
+### Passing parameters
+
+All parameters are passed by reference, but mutable and immutable types behaves differently
+
+**Immutable types**
 
 ```python
-def pixelToggle(row, col):
-    curr = display.get_pixel(row,col)
-    if curr: display.set_pixel(row,col,0)
-    else: display.set_pixel(row,col,9)
+def changeNum(n):
+    n= 0
 
-while True:
-    pixelToggle(0,0)
-    sleep(1000)
+x= 5
+changeNum (x)
+print (x)       # x is still 5
 ```
 
-### All
+**Mutable types**
 
 ```python
-def all (value):
-    for row in range (0,5):
-        for col in range (0,5):
-            display.set_pixel(row,col,value)
+def changeList(n):
+    n[0] = 0
 
-while True:
-    all(9)
-    sleep(1000)
-    all(0)
-    sleep(1000)
+x= [5]
+changeList (x)
+print (x)    # The list changed to [0]
 ```
 
-### X-Cross
+### Functions and globals
 
 ```python
-def xcross (value):
-    for row in range (0,5):
-        for col in range (0,5):
-            if (row==col or row+col==4):
-                display.set_pixel(row,col,value)
+x=1
 
-while True:
-    xcross(9)
-    sleep(1000)
-    xcross(0)
-    sleep(1000)
+# this won't work!!
+def increment():
+    x+= 1       # error, x is local but not initialized
+
+# this is correct
+def increment():
+    global x
+    x+= 1   # x is a global, so it works
 ```
 
-### Blinking two LEDs (blocking)
+### Higher order functions
+
+> This is an advanced topic and we will not cover this in class. If you are curious, however, I am happy to explain more.
+
+In python all function are first-order which means they can be passed assigned to variables, passed as parameters and returned by functions.
+
+Here an example of a function passed as parameter to called later
 
 ```python
-delay1= 1000
-delay2= 100
-counter = 0
+from microbit import *
 
-# pixelToggle is defined in the examples above
+def sayHello(): display.show('Hello')
 
-while True:
-    pixelToggle (1,1) # Fast LED (1,1)
+def callMeAfter(msTime, callBackFunction):
+    sleep(msTime)
+    callBackFunction()
 
-    # we reached 10
-    if (counter %10 == 0):
-        pixelToggle(0,0) # Slow LED (0,0)
-
-    sleep (delay2) # delay2 is 1/10 of delay1
-    counter += 1
+callMeAfter(4000, sayHello)
+# the function sayHello is called after 4 seconds
 ```
 
-### Blinking two LEDs (non-blocking)
+Here an example of a function which partially applied
 
 ```python
-import utime
+def sum(a,b): return a+b
 
-delay1= 1000
-delay2= 100
-prevTime1 = 0
-prevTime2 = 0
+# add2 is a partial application of sum
+def add2(x):
+    return sum(x, 2)
 
-# pixelToggle is defined in the examples above
-
-while True:
-    currTime = utime.ticks_ms()
-    delta1= utime.ticks_diff(currTime, prevTime1)
-    delta2= utime.ticks_diff(currTime, prevTime2)
-
-    if (delta1 >= delay1):
-        pixelToggle(0,0) # Slow LED (0,0)
-        prevTime1= currTime
-
-    if (delta2 >= delay2):
-        pixelToggle(1,1) # Fast LED (1,1)
-        prevTime2= currTime
-```
-
-or even better
-
-```python
-import utime
-prevTime = {}
-
-def tick(ms, callback):
-    if (ms not in prevTime):
-        prevTime[ms] = 0
-    if utime.ticks_diff(utime.ticks_ms(), prevTime[ms]) > ms:
-        callback()
-        prevTime[ms] = utime.ticks_ms()
-
-delay1= 1000
-delay2= 100
-
-# pixelToggle is defined in the examples above
-while True:
-    # Slow LED (0,0)
-    tick(delay1, lambda: pixelToggle(0,0))
-    # Fast LED (1,1)
-    tick(delay2, lambda: pixelToggle(1,1))
+add2(10)        # 12
 ```
