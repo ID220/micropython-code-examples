@@ -6,9 +6,9 @@ This pages contains very simple code examples you should probably be already fam
 
 - [Python basics](#python-basics)
   - [Types and convertions](#types-and-convertions)
-    - [Numbers (unmutable)](#numbers-unmutable)
-    - [Strings (unmutable)](#strings-unmutable)
-    - [Booleans (unmutable)](#booleans-unmutable)
+    - [Numbers (immutable)](#numbers-immutable)
+    - [Strings (immutable)](#strings-immutable)
+    - [Booleans (immutable)](#booleans-immutable)
     - [Lists (mutable)](#lists-mutable)
   - [Control Structures](#control-structures)
     - [Branching (if-else)](#branching-if-else)
@@ -27,7 +27,7 @@ This pages contains very simple code examples you should probably be already fam
 
 ## Types and convertions
 
-### Numbers (unmutable)
+### Numbers (immutable)
 
 ```python
 x = 3   # integer
@@ -44,7 +44,7 @@ abs(-2)     # 2
 int(y)      # 5
 ```
 
-### Strings (unmutable)
+### Strings (immutable)
 
 ```python
 str1 = "A string"
@@ -61,7 +61,7 @@ str1.split(' ')     # ['A', 'string']
 int("1") + 1        # 2 (number)
 ```
 
-### Booleans (unmutable)
+### Booleans (immutable)
 
 ```python
 True
