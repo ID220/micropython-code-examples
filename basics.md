@@ -247,7 +247,7 @@ def increment():
 
 > This is an advanced topic and we will not cover this in class. If you are curious, however, I am happy to explain more.
 
-In python all function are first-order which means they can be passed assigned to variables, passed as parameters and returned by functions.
+In python all function are first-order which means they can be assigned to variables, passed as parameters and returned by functions.
 
 Here an example of a function passed as parameter to called later
 
@@ -264,7 +264,7 @@ callMeAfter(4000, sayHello)
 # the function sayHello is called after 4 seconds
 ```
 
-Here an example of a function which is partially applied
+Here an example of a function which returns a partially applied function:
 
 ```python
 def sum(a,b): return a+b
