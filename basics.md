@@ -10,6 +10,13 @@ This pages contains very simple code examples you should probably be already fam
     - [Strings (unmutable)](#strings-unmutable)
     - [Booleans (unmutable)](#booleans-unmutable)
     - [Lists (mutable)](#lists-mutable)
+  - [Control Structures](#control-structures)
+    - [Branching (if-else)](#branching-if-else)
+    - [Loops](#loops)
+      - [Loop as a counter](#loop-as-a-counter)
+      - [Loop as accumulator](#loop-as-accumulator)
+      - [Loop through lists](#loop-through-lists)
+      - [Infinite loop](#infinite-loop)
   - [Functions](#functions)
     - [Declaring and using a function](#declaring-and-using-a-function)
     - [Passing parameters](#passing-parameters)
@@ -85,6 +92,81 @@ ls.clear()          # ls = []
 ```
 
 > **NOTE** Python has several other [buil-in types](https://docs.python.org/3/library/stdtypes.html). Worth noticing are dictionaries (`dict`), `tuple`, `range`, and `set`.
+
+---
+
+## Control Structures
+
+### Branching (if-else)
+
+```python
+age = 15
+
+if (age < 13):
+    print('Child')
+elif (age < 20):
+    print('Teenager')
+else:
+    print ('Adult')
+```
+
+### Loops
+
+#### Loop as a counter
+
+```python
+# using while-loop
+i = 0
+while (i < 5):
+    print (i)     # 0 1 2 3 4
+
+# same result using for-loop
+for j in range (0,5):
+    print (j)     # 0 1 2 3 4
+```
+
+#### Loop as accumulator
+
+```python
+# using while-loop
+sum1 = 0
+i = 0
+while (i < 5):
+    sum1 += i   # results in 10
+
+# same result using for-loop
+sum2= 0
+for j in range (0,5):
+    sum2 += j   # results in 10
+```
+
+#### Loop through lists
+
+```python
+fruit = ['apple', 'pear', 'banana']
+
+# iterator style
+for item in fruit:
+    print (item)
+
+# index-addressing style
+for i in range (0, len(fruit)):
+    print (fruit[i])
+```
+
+#### Infinite loop
+
+```python
+while True:
+    # keep looping unless button A is pressed
+
+    print ('Do something')
+
+    if (button_a.is_pressed()):
+        print ("Getting out)
+        break   # this will exit the while
+
+```
 
 ---
 
