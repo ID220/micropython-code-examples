@@ -264,7 +264,7 @@ callMeAfter(4000, sayHello)
 # the function sayHello is called after 4 seconds
 ```
 
-Here an example of a function which partially applied
+Here an example of a function which is partially applied
 
 ```python
 def sum(a,b): return a+b
