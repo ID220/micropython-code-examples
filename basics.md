@@ -70,8 +70,12 @@ False
 True or False       # True
 True and False      # False
 not True            # False
+True == True        # True
+True != False       # True
 
 5 < 10              # True
+5 == 5              # True
+5 != 10             # True
 ```
 
 ### Lists (mutable)
@@ -89,6 +93,21 @@ ls[0:2]             # [4, 1]
 ls[0]= 1            # ls => [1, 1, 2]
 ls.copy()           # [1, 1, 2]
 ls.clear()          # ls = []
+```
+
+It is important to realize that lists are references to objects stored in memory.
+
+```python
+ls1 = [1,2,3]   # ls1 is a list
+ls2 = [1,2,3]   # ls2 is another list containing the same values of ls1
+ls3 = ls1       # ls3 points to the same list pointed by ls1
+
+ls1 == ls2      # True
+ls1 is ls2      # False
+
+ls1 == ls3      # True
+ls1 is ls3      # True
+
 ```
 
 > **NOTE** Python has several other [buil-in types](https://docs.python.org/3/library/stdtypes.html). Worth noticing are dictionaries (`dict`), `tuple`, `range`, and `set`.
