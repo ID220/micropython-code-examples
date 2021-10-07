@@ -14,18 +14,17 @@ clock = pin13
 spi.init(10000, 8, 0,
          sclk=clock, mosi=data)
 
-while True:
-    latch.write_digital(0)
+
+latch.write_digital(0)
     
-    # Send a single byte containing the number 7
-    spi.write(b'\x07')
+# Send a single byte containing the number 7
+spi.write(b'\x07')
 
-    # Send two bytes with the number 7 and 1
-    buffer = bytes([7, 1])
-    spi.write(buffer)
+# Send two bytes with the number 7 and 1
+buffer = bytes([7, 1])
+spi.write(buffer)
 
-    latch.write_digital(1)
-    sleep(100)
+latch.write_digital(1)
 ```
 
 
