@@ -1,4 +1,4 @@
-# Pixels
+# Shift Register
 
 These are examples of showing different ways to send data to a 8-bit shift register (74HC595).
 
