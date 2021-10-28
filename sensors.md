@@ -31,23 +31,23 @@ while True:
     # 1. Determine the case in the quadrature
     a = pin0.read_digital()
     b = pin1.read_digital()
-    abcase = 0
+    quadratureCase = 0
 
-    if (a == 1 and b == 1):
-        abcase = 0
+    if (a == 1 and b == 0):
+        quadratureCase = 0  # case 0
+    elif (a == 1 and b == 1):
+        quadratureCase = 1  # case 1
     elif (a == 0 and b == 1):
-        abcase = 1
+        quadratureCase = 2  # case 2
     elif (a == 0 and b == 0):
-        abcase = 2
-    elif (a == 1 and b == 0):
-        abcase = 3
+        quadratureCase = 3  # case 3
 
-    if (abcase == prevCase):
+    if (quadratureCase == prevCase):
         continue  # no changes
 
     # 2. Determine if spinning left or right, and increment accordingly position
-    increment = abcase-prevCase
-    prevCase = abcase
+    increment = quadratureCase-prevCase
+    prevCase = quadratureCase
 
     if (increment == -3):
         position -= 1  # left
