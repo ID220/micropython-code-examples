@@ -129,5 +129,8 @@ Get the temperature in Celsius of the board
 
 ```python
 from microbit import *
-print (microbit.temperature())
+
+while True:
+    print (temperature())
+    sleep(1000)
 ```
