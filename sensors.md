@@ -1,5 +1,11 @@
 # Sensors
 
+**Index**
+- [Sensors](#sensors)
+  - [Optical encoder](#optical-encoder)
+  - [Compass](#compass)
+  - [Acceleroemter](#acceleroemter)
+
 ## Optical encoder
 
 Here the full code example of using an optical encoder.
@@ -55,3 +61,63 @@ while True:
     print(position) # printing the result
 ```
 
+## Compass
+
+Using the built-in compass in micro:bit.
+
+```python
+from microbit import *
+
+
+# Start calibrating
+compass.calibrate()
+
+# Try to keep the needle pointed in (roughly) the correct direction
+while True:
+    sleep(100)
+    needle = ((15 - compass.heading()) // 30) % 12
+    display.show(Image.ALL_CLOCKS[needle])
+    
+```
+
+
+## Acceleroemter
+
+Detect shaking with the default threshold, using the built-in accelerometer:
+
+```python
+from microbit import *
+
+while True:
+    if accelerometer.was_gesture('shake'):
+        display.scroll('Shake')
+        sleep(1000)
+        display.clear()
+    sleep(10)
+```
+
+or using a custom threshold
+
+```python
+from microbit import *
+from math import *
+
+while True:
+    xyz = accelerometer.get_values()
+    x = xyz[0]
+    y = xyz[1]
+    z = xyz[2]
+    '''
+    # or
+    x = accelerometer.get_x()
+    y = accelerometer.get_y()
+    z = accelerometer.get_z()
+    '''
+
+    shake = sqrt(int(x*x + y*y + z*z))
+    if shake > 3000:  # 3000 is a custom threshold
+        display.scroll('Shake')
+        sleep(1000)
+        display.clear()
+    sleep(10)
+```
