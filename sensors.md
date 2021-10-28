@@ -5,6 +5,7 @@
   - [Optical encoder](#optical-encoder)
   - [Compass](#compass)
   - [Acceleroemter](#acceleroemter)
+  - [Temperature](#temperature)
 
 ## Optical encoder
 
@@ -120,4 +121,13 @@ while True:
         sleep(1000)
         display.clear()
     sleep(10)
+```
+
+## Temperature
+
+Get the temperature in Celsius of the board
+
+```python
+from microbit import *
+print (microbit.temperature())
 ```
