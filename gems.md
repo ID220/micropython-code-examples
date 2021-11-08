@@ -6,6 +6,7 @@ The following snippets are a random collection of libraries to use Radio, NeoPix
 - [Gems](#gems)
   - [NeoPixels](#neopixels)
   - [LCD](#lcd)
+  - [Radio](#radio)
 ## NeoPixels
 
 Here the example we did in class, where we cycle over different colors for different LEDs (total 8 LEDs) on a strip.
@@ -57,4 +58,27 @@ Make sure that in the `microbit_i2c_lcd.py` file you have set the correct addres
 ```python
 # LCD Address, could be  0x27
 ADDRESS = 0x27
+```
+
+## Radio
+
+Here an example of how to use the radio, inspired by [this](https://microbit-micropython.readthedocs.io/en/v1.0.1/tutorials/radio.html) tutorial:
+
+```python
+from microbit import display, button_a, sleep
+import radio
+
+# The radio won't work unless it's switched on.
+radio.on()
+
+counter = 0
+while True:
+    if button_a.was_pressed():
+        radio.send('Send '+str(counter))  # a-ha
+        counter += 1
+
+    incoming = radio.receive()
+    if incoming != None:
+        print(incoming)
+    sleep(500)
 ```
