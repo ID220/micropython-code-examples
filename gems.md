@@ -74,7 +74,7 @@ radio.on()
 counter = 0
 while True:
     if button_a.was_pressed():
-        radio.send('Send '+str(counter))  # a-ha
+        radio.send('Send '+str(counter)) 
         counter += 1
 
     incoming = radio.receive()
