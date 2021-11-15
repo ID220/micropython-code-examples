@@ -1,5 +1,44 @@
 # Files
 
+- [Files](#files)
+  - [Read from files](#read-from-files)
+  - [Write to files](#write-to-files)
+  - [Appending to files](#appending-to-files)
+
+
+## Read from files
+
+The file must exist.
+
+```python
+# Read all at once
+content = ""
+with open('data.txt', 'r') as my_file:
+    content = my_file.read()
+print(content)
+
+# read line by line
+content = ""
+with open('data.txt', 'r') as my_file:
+    data = my_file.readline()
+    while data != '':
+        content += data.upper()
+        data = my_file.readline()
+print(content)
+```
+
+## Write to files
+
+```python
+with open('data.txt', 'w') as my_file:
+    my_file.write('hello')
+    my_file.write('\n')
+    my_file.write(str(25))
+    my_file.write('\n')
+```
+
+## Appending to files
+
 This is an example of how to read and write on a file (`data.csv`). Specifically, this file contains a list of coordinates (row, column) of the pixels of the micro:bit that should be on.
 
 Here an example:
