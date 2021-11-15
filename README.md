@@ -6,4 +6,5 @@ MicroPython code examples for ID220 taught at KAIST
 - [Pixels](pixels.md)
 - [Shift register](shift-register.md)
 - [Sensors](sensors.md)
+- [Gems](gems.md)
 - [Files](files.md)
