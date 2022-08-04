@@ -10,8 +10,8 @@ MicroPython code examples for ID220 taught at KAIST
 
 ## For micro:bit
 
-- [Pixels](pixels_microbit.md)
-- [Shift register](shift-register.md)
-- [Sensors](sensors.md)
-- [Gems](gems.md)
-- [Files](files.md)
+- [Pixels](microbit/pixels.md)
+- [Shift register](microbit/shift-register.md)
+- [Sensors](microbit/sensors.md)
+- [Gems](microbit/gems.md)
+- [Files](microbit/files.md)
