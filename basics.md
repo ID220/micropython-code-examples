@@ -199,7 +199,7 @@ def sum(a,b):
     return a+b
 
 # function call
-sum(1,2)        # 3
+sum(1,2)   # 3
 ```
 
 ### Passing parameters
@@ -252,16 +252,16 @@ In python all function are first-order which means they can be assigned to varia
 Here an example of a function passed as parameter to called later
 
 ```python
-from microbit import *
+import time
 
-def sayHello(): display.show('Hello')
+def sayHello(): print('Hello')
 
 def callMeAfter(msTime, callBackFunction):
-    sleep(msTime)
+    time.sleep(msTime)
     callBackFunction()
 
-callMeAfter(4000, sayHello)
 # the function sayHello is called after 4 seconds
+callMeAfter(4, sayHello)
 ```
 
 Here an example of a function which returns a partially applied function:
