@@ -249,7 +249,7 @@ def increment():
 
 In python all function are first-order which means they can be assigned to variables, passed as parameters and returned by functions.
 
-Here an example of a function passed as parameter to called later
+Here an example of a function passed as parameter to be called later
 
 ```python
 import time
