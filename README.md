@@ -7,6 +7,7 @@ MicroPython code examples for ID220 taught at KAIST
 ## For Raspberry Pi Pico
 
 - [Pixels](pixels.md)
+- [Buttons](buttons.md)
 
 ## For micro:bit
 
