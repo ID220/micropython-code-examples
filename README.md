@@ -8,6 +8,7 @@ MicroPython code examples for ID220 taught at KAIST
 
 - [Pixels](pixels.md)
 - [Buttons](buttons.md)
+- [Icremental Encoder](encoder.md)
 
 ## For micro:bit
 
