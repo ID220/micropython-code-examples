@@ -28,9 +28,11 @@ i2c = I2C(0, scl=Pin(17), sda=Pin(16), freq=400_000)
 ids = i2c.scan()
 MPU = ids[0]
 
-i2c.writeto(MPU, bytearray([0x6B, 0]))
-i2c.writeto(MPU, bytearray([0x68, 7]))  # reset
+i2c.writeto(MPU, bytearray([0x6B, 1])) # device reset
+time.sleep_ms(100)
+i2c.writeto(MPU, bytearray([0x68, 7]))  # gyro reset
 time.sleep(1)
+
 
 
 while True:
