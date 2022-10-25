@@ -53,3 +53,25 @@ while True:
     print(GcX, GcY, GcZ)
     time.sleep_ms(500)
 ```
+
+Here the same code using a [library](https://github.com/micropython-IMU/micropython-mpu9x50) and following [this example](https://microcontrollerslab.com/mpu6050-raspberry-pi-pico-micropython-tutorial/):
+
+```py
+from imu import MPU6050
+import time, math
+from machine import Pin, I2C
+i2c = I2C(0, scl=Pin(17), sda=Pin(16), freq=400_000)
+imu = MPU6050(i2c)
+
+print("Temperature: ", round(imu.temperature,2), "°C")
+while True:
+    ax=round(imu.accel.x,2)
+    ay=round(imu.accel.y,2)
+    az=round(imu.accel.z,2)
+    gx=round(imu.gyro.x)
+    gy=round(imu.gyro.y)
+    gz=round(imu.gyro.z)
+    tem=round(imu.temperature,2)
+    print("ax",ax,"\t","ay",ay,"\t","az",az,"\t","gx",gx,"\t","gy",gy,"\t","gz",gz,"\t","Temperature",tem,"        ",end="\r")
+    time.sleep(0.2)
+```
