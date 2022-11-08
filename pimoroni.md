@@ -8,7 +8,6 @@ import time
 
 picounicorn.init()
 
-
 # From CPython Lib/colorsys.py
 def hsv_to_rgb(h, s, v):
     if s == 0.0:
@@ -43,4 +42,7 @@ while True:
             r, g, b = [int(c * 255) for c in hsv_to_rgb(t + ((x + y) / w / 4), 1.0, 1.0)]
             picounicorn.set_pixel(x, y, r, g, b)
     time.sleep(1.0 / 60)
+
+    if picounicorn.is_pressed(picounicorn.BUTTON_A):  # Wait for Button A to be pressed
+        print("Button A pressed!")
 ```
