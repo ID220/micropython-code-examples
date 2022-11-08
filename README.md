@@ -12,6 +12,7 @@ MicroPython code examples for ID220 taught at KAIST
 - [Software Filters](filters.md)
 - [I2C and MPU6050](i2c.md)
 - [NeoPixels](neopixels.md)
+- [Pimoroni Unicorn Pack (LEDs)](pimoroni.md)
 
 ## For micro:bit
 
