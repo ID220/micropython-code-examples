@@ -1,6 +1,6 @@
 # Pimoroni
 
-Here an example from the [offcial documentation](https://github.com/pimoroni/pimoroni-pico/blob/main/micropython/examples/pico_unicorn/rainbow.py) for displaying a rainbow on the [Pico Unicorn Pack](https://shop.pimoroni.com/products/pico-unicorn-pack?variant=32369501306963).
+Here an example from the [offcial documentation](https://github.com/pimoroni/pimoroni-pico/blob/main/micropython/examples/pico_unicorn/rainbow.py) for displaying a rainbow on the [Pico Unicorn Pack](https://shop.pimoroni.com/products/pico-unicorn-pack?variant=32369501306963). Make sure the [uf2 firmware](https://github.com/pimoroni/pimoroni-pico/releases/tag/v1.19.9) is installed first.
 
 ```py
 import picounicorn
