@@ -11,6 +11,7 @@ MicroPython code examples for ID220 taught at KAIST
 - [Icremental Encoder](encoder.md)
 - [Software Filters](filters.md)
 - [I2C and MPU6050](i2c.md)
+- [NeoPixels](neopixels.md)
 
 ## For micro:bit
 
