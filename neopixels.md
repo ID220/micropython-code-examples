@@ -19,7 +19,7 @@ print (r,g,b)
 time.sleep(1)
 
 # All Red
-np.fill((255, 0, 0)) # all off
+np.fill((255, 0, 0)) # all red
 np.write()
 time.sleep(1)
 
